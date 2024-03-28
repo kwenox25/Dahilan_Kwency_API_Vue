@@ -1,0 +1,83 @@
+@use "../abstracts" as a;
+
+#exhibitions {
+  padding-top: 30px;
+  background-color: a.$lavender;
+  padding-bottom: 30px;
+}
+
+.flex-titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid black;
+}
+
+.flex-titles h3 {
+  font-family: a.$heading-font-family;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.flex-titles p a {
+  font-family: a.$heading-font-family;
+  margin: 0;
+  text-decoration: none;
+  color: black;
+}
+
+.jean-artwork {
+  padding-top: 30px;
+}
+
+.special,
+.flex-container2 p {
+  font-family: a.$heading-font-family;
+  color: a.$grey;
+}
+
+.artwork-desc {
+  padding-top: 30px;
+  color: a.$black;
+  padding-bottom: 30px;
+}
+.flex-container2 h3 {
+  padding-top: 20px;
+  font-family: a.$heading-font-family;
+}
+.flex-container2 {
+  padding-top: 30px;
+  display: flex;
+  height: 100%;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: a.$grey;
+  margin: 20px 0;
+}
+@media screen and (min-width: 768px) {
+  #exhibitions {
+    padding-top: 50px;
+    background-color: a.$lavender;
+  }
+
+  .flex-titles h3 {
+    font-size: 35px;
+  }
+
+  .artwork-desc {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .flex-titles h3 {
+    font-size: 60px;
+  }
+  .artwork-desc {
+    font-size: 25px;
+  }
+}
