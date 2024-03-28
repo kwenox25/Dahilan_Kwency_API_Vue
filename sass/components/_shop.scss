@@ -1,0 +1,72 @@
+@use "../abstracts" as a;
+
+#shop {
+  background-image: url("/images/image-45-copyright.jpg");
+  background-repeat: no-repeat;
+  height: 350px;
+  display: grid;
+  place-items: center;
+}
+
+.shop-flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.shop-flex-container h3 {
+  color: white;
+  font-family: a.$heading-font-family;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.shop-flex-container p {
+  color: white;
+  font-family: a.$heading-font-family;
+  margin-bottom: 20px;
+}
+
+.shop-buttonRead {
+  color: white;
+  font-family: a.$heading-font-family;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.shop-buttonRead a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+.shop-buttonRead a:hover {
+  border-bottom: 3px solid white;
+}
+
+@media screen and (min-width: 768px) {
+  #shop {
+    height: 500px;
+  }
+  .shop-flex-container h3 {
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  #about {
+    height: 500px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .shop-flex-container h3 {
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 25px;
+  }
+
+  .shop-flex-container p {
+    font-size: 25px;
+    margin-bottom: 30px;
+  }
+}
