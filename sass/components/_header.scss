@@ -1,0 +1,168 @@
+@use "../abstracts" as a;
+#sticky-nav-con {
+  background-color: a.$lavender;
+  height: 56px;
+}
+
+#main-nav {
+  display: inline-block;
+  grid-row: 1/1;
+}
+
+#button {
+  width: 20px;
+  height: 20px;
+  background: url(../images/burger.svg) no-repeat center;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  transition: all 0.5s ease;
+  border: 0;
+  margin-left: 92%;
+}
+#main-nav button.expanded {
+  transform: rotate(90deg);
+}
+
+#logo {
+  margin-top: 15px;
+  display: inline-block;
+  grid-row: 1/1;
+}
+
+#logo img {
+  max-width: 30px;
+}
+
+#burger-con {
+  position: absolute;
+  margin-top: 54px;
+  margin-bottom: 25px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: a.$lavender;
+  z-index: 9999;
+  display: none;
+  // display: inline-block;
+  // grid-row: 1/1;
+}
+
+#burger-con.slide-toggle {
+  display: block;
+}
+
+#main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#main-nav ul li a {
+  display: block;
+  padding: 0 0 10px 0;
+  text-align: center;
+  color: a.$grey;
+  font-family: a.$heading-font-family;
+  text-decoration: none;
+}
+
+#main-nav ul li a:hover {
+  color: a.$black;
+
+  border-bottom: #000 solid 2px;
+}
+
+#main-nav ul li:last-child {
+  margin-bottom: 10px;
+}
+
+#burger-menu li:last-child a {
+  font-weight: bold;
+}
+
+// #burger-menu li:last-child a:hover {
+// }
+
+@media screen and (min-width: 768px) {
+  #sticky-nav-con {
+    height: 55px;
+  }
+  #sticky-nav-con {
+    // position: sticky;
+
+    top: 0px;
+    // border-bottom: solid 1px #c3c3c3;
+    z-index: 1;
+    /* had to set z-index as css filters was causing images to overlap, see below */
+  }
+
+  #button {
+    display: none;
+  }
+
+  #burger-con {
+    display: block;
+    font-size: 12px;
+    position: relative;
+    margin-top: 20px;
+    height: 0;
+    top: 0;
+    left: 0;
+  }
+
+  #burger-con ul li,
+  #burger-con ul li:first-child {
+    border: none;
+    display: inline;
+  }
+
+  #main-nav ul li a {
+    display: inline;
+  }
+
+  #burger-con ul li {
+    font-size: 15px;
+    // font-weight: bold;
+    margin-right: 20px;
+  }
+
+  #burger-con ul li:last-child {
+    margin-left: auto;
+    margin-right: 0px;
+  }
+
+  // #main-nav {
+  //   margin-bottom: 3%;
+  //   padding-left: 30px;
+  // }
+}
+
+@media screen and (min-width: 1200px) {
+  #sticky-nav-con {
+    height: 120px;
+  }
+  #main-header {
+    height: 120px;
+  }
+
+  #main-nav {
+    // margin-bottom: 4%;
+    margin-left: 100px;
+    margin: auto;
+  }
+  #logo img {
+    margin-top: 13px;
+    max-width: 70px;
+  }
+
+  #burger-con ul li {
+    margin-right: 50px;
+    font-size: 16px;
+  }
+
+  #burger-con ul li:last-child {
+    margin-left: auto;
+    margin-right: 0px;
+  }
+}
