@@ -19,6 +19,18 @@ export function scrollTrigger() {
   });
   console.log("scroll to working");
 
+  const welcomeAnimation = gsap.from("#hero-con h2, #hero-con .buttonVisit", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+  });
+
+  ScrollTrigger.create({
+    trigger: "#hero-con",
+    animation: welcomeAnimation,
+    start: "top 80%",
+    once: true,
+  });
   const imageAnimation = gsap.from(".jean-artwork", {
     opacity: 0,
     x: 100,
@@ -30,6 +42,77 @@ export function scrollTrigger() {
   ScrollTrigger.create({
     trigger: "#exhibitions",
     animation: imageAnimation,
+    start: "top 80%",
+    once: true,
+  });
+
+  // Animation for About section
+  const aboutAnimation = gsap.from("#about h3, #about p", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+  });
+
+  ScrollTrigger.create({
+    trigger: "#about",
+    animation: aboutAnimation,
+    start: "top 80%",
+    once: true,
+  });
+
+  // Animation for Upcoming Exhibitions section
+  const exhibitionsAnimation = gsap.from("#exhibitions h3", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+  });
+
+  ScrollTrigger.create({
+    trigger: "#exhibitions",
+    animation: exhibitionsAnimation,
+    start: "top 80%",
+    once: true,
+  });
+
+  // Animation for Collections section
+  const collectionsAnimation = gsap.from("#collections h3", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+  });
+
+  ScrollTrigger.create({
+    trigger: "#collections",
+    animation: collectionsAnimation,
+    start: "top 80%",
+    once: true,
+  });
+
+  // Animation for flex-container2
+  const flexContainer2Animation = gsap.from(".flex-container2 > div", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+    stagger: 0.3,
+  });
+
+  ScrollTrigger.create({
+    trigger: ".flex-container2",
+    animation: flexContainer2Animation,
+    start: "top 80%",
+    once: true,
+  });
+
+  const shopFlexContainerAnimation = gsap.from(".shop-flex-container > div", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+    stagger: 0.3,
+  });
+
+  ScrollTrigger.create({
+    trigger: "#shop",
+    animation: shopFlexContainerAnimation,
     start: "top 80%",
     once: true,
   });

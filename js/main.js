@@ -18,8 +18,9 @@ const artCollection = Vue.createApp({
         this.artworksData = data;
       })
       .catch((error) => {
-        console.error("Error fetching artworks:", error);
-        this.error = "Failed to fetch artworks from the API";
+        console.error("Error fetching artwork:", error);
+        console.log("Catch block reached");
+        this.error = "Failed to fetch artwork details from the API";
       });
   },
   data() {
@@ -62,6 +63,7 @@ const artCollection = Vue.createApp({
         })
         .catch((error) => {
           console.error("Error fetching artwork:", error);
+          console.log("Catch block reached");
           this.error = "Failed to fetch artwork details from the API";
         });
     },
