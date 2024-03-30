@@ -51,7 +51,7 @@ const artCollection = Vue.createApp({
       const artworkCon = document.querySelector("#artworkInfoCon");
       artworkCon.innerHTML = spinner;
 
-      fetch(`https://api.artic.edu/api/v1/artwork/${artworkId}`)
+      fetch(`https://api.artic.edu/api/v1/artworks/${artworkId}`)
         .then((res) => {
           if (!res.ok) {
             throw new Error("Network response was not ok");
