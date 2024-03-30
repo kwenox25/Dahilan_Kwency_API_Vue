@@ -1,58 +1,71 @@
 import { burgerMenu } from "./modules/burgermenu.js";
 import { scrollTrigger } from "./modules/scrolltrigger.js";
-import {
-  Spanish,
-  French,
-  Tagalog,
-  Nihongo,
-  Hangul,
-  Italian,
-} from "./modules/language.js";
 
-if (document.body.getAttribute("data-page") === "home") {
-  burgerMenu();
-  scrollTrigger();
-} else if (document.body.getAttribute("data-page") === "languageSelection") {
-  let languageSelection = new Spanish();
+burgerMenu();
+scrollTrigger();
 
-  const languageList = document.querySelector("#languageList");
-  const greetingsList = document.querySelector("#greetingsList");
+const artCollection = Vue.createApp({
+  created() {
+    fetch("http://localhost/aic-api/public/artworks")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Artworks data:", data);
+        this.artworksData = data;
+      })
+      .catch((error) => {
+        console.error("Error fetching artworks:", error);
+        this.error = "Failed to fetch artworks from the API";
+      });
+  },
+  data() {
+    return {
+      artworksData: [],
+      artistName: "",
+      title: "",
+      place: "",
+      publishedDate: "",
+      medium: "",
+      dimensions: "",
+      description: "",
+      error: "",
+    };
+  },
+  methods: {
+    getArtwork(artworkId) {
+      fetch(`https://api.artic.edu/api/v1/artworks/${artworkId}`)
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          console.log("Artwork data:", data);
+          const artwork = data.data;
+          if (artwork) {
+            this.error = "";
+            this.artistName = artwork.artist_display;
+            this.title = artwork.title;
+            this.place = artwork.place_of_origin;
+            this.publishedDate = artwork.date_display;
+            this.dimensions = artwork.dimensions;
+            this.medium = artwork.medium_display;
+            this.description = artwork.description;
+          } else {
+            this.error = "Artwork not found.";
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching artwork:", error);
+          this.error = "Failed to fetch artwork details from the API";
+        });
+    },
+  },
+});
 
-  languageList.addEventListener("click", (e) => {
-    if (e.target.tagName === "IMG" || e.target.tagName === "P") {
-      const selectedLanguage = e.target
-        .closest("li")
-        .querySelector("p")
-        .textContent.toLowerCase();
-      if (selectedLanguage === "french") {
-        languageSelection = new French();
-      } else if (selectedLanguage === "tagalog") {
-        languageSelection = new Tagalog();
-      } else if (selectedLanguage === "nihongo") {
-        languageSelection = new Nihongo();
-      } else if (selectedLanguage === "hangul") {
-        languageSelection = new Hangul();
-      } else if (selectedLanguage === "italian") {
-        languageSelection = new Italian();
-      } else {
-        languageSelection = new Spanish();
-      }
-      renderGreetings();
-    }
-  });
-
-  function renderGreetings() {
-    greetingsList.innerHTML = "";
-
-    for (const key in languageSelection) {
-      if (Object.hasOwnProperty.call(languageSelection, key)) {
-        const li = document.createElement("li");
-        li.textContent = `${key}: "${languageSelection[key]}"`;
-        greetingsList.appendChild(li);
-      }
-    }
-  }
-
-  console.log("OOP working");
-  renderGreetings();
-}
+artCollection.mount("#app");

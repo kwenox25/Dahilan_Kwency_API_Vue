@@ -36,6 +36,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- ScrollTo plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
 
   <body data-page="home">
@@ -152,7 +153,45 @@
               <h3>The Collections</h3>
               <p><a href="#">VIEW ALL COLLECTIONS</a></p>
             </div>
-            <div class="col-span-4"></div>
+          </div>
+        </div>
+        <!-- VUE INTEGRATIONS FOR ARTWORK LIST -->
+        <div class="grid-con" id="app">
+          <p class="col-span-full">
+            Click on the artwork title to find out more about it.
+          </p>
+          <div class="col-span-full">
+            <ul id="artworks-list">
+              <li
+                class="artworkCon"
+                v-for="artwork in artworksData"
+                :key="artwork.id"
+              >
+                <h3>
+                  Title:
+                  <a href="#artwork" @click="getArtwork(artwork.id)">
+                    {{ artwork.title }}
+                  </a>
+                </h3>
+                <img
+                  v-bind:src="`images/${artwork.artwork_thumbnail}`"
+                  alt="Artwork Thumbnail"
+                />
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-span-full" id="artworkInfoCon">
+            <div v-if="error">{{ error }}</div>
+            <div v-if="!error" id="artwork">
+              <p>Artist: {{ artistName }}</p>
+              <p>Title: {{ title }}</p>
+              <p>Place of Origin: {{ place }}</p>
+              <p>Published Date: {{ publishedDate }}</p>
+              <p>Dimensions: {{ dimensions }}</p>
+              <p>Medium: {{ medium }}</p>
+              <p>Description: {{ description }}</p>
+            </div>
           </div>
         </div>
       </section>
