@@ -19,7 +19,7 @@ export function scrollTrigger() {
   });
   console.log("scroll to working");
 
-  const imageAnimation = gsap.from("#why-tuon-con img", {
+  const imageAnimation = gsap.from(".jean-artwork", {
     opacity: 0,
     x: 100,
     stagger: 0.3,
@@ -28,7 +28,7 @@ export function scrollTrigger() {
   });
 
   ScrollTrigger.create({
-    trigger: "#why-tuon-con",
+    trigger: "#exhibitions",
     animation: imageAnimation,
     start: "top 80%",
     once: true,

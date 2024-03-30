@@ -112,4 +112,18 @@ $app->router->group([
     require __DIR__.'/../routes/web.php';
 });
 
+// In bootstrap/app.php
+
+// Register middleware
+$app->middleware([
+    // Other middleware...
+    App\Http\Middleware\CorsMiddleware::class,
+]);
+
+// Register route middleware
+$app->routeMiddleware([
+    // Other route middleware...
+]);
+
+
 return $app;
