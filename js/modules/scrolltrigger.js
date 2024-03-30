@@ -106,13 +106,28 @@ export function scrollTrigger() {
   const shopFlexContainerAnimation = gsap.from(".shop-flex-container > div", {
     opacity: 0,
     y: 100,
-    duration: 1,
+    duration: 2,
     stagger: 0.3,
   });
 
   ScrollTrigger.create({
     trigger: "#shop",
     animation: shopFlexContainerAnimation,
+    start: "top 80%",
+    once: true,
+  });
+
+  const artworksListAnimation = gsap.from("#app", {
+    opacity: 0,
+    y: 50,
+    duration: 2,
+    stagger: 0.2,
+    ease: "power4.out",
+  });
+
+  ScrollTrigger.create({
+    trigger: "#collections",
+    animation: artworksListAnimation,
     start: "top 80%",
     once: true,
   });

@@ -19,7 +19,11 @@ This project is a responsive website for an art museum, designed to showcase art
 
 ## Credits
 
-Kwency Maye Dahilan
+Kwency Maye Dahilan | Apple Grace Gesalan
+
+### Art Institute of Chicago API
+
+The artwork information displayed on this website is sourced from the [Art Institute of Chicago API](https://www.artic.edu/), which provides access to their extensive collection of artworks. We are grateful for their API, which enriches the user experience by showcasing artworks from one of the world's premier art museums.
 
 ## License
 
