@@ -20,7 +20,8 @@ const artCollection = Vue.createApp({
       .catch((error) => {
         console.error("Error fetching artwork:", error);
         console.log("Catch block reached");
-        this.error = "Failed to fetch artwork details from the API";
+        this.error =
+          "Failed to fetch artwork details from the API. Looks like our connection is 'sketchy'! Maybe take a stroll through the museum and 'draw' some inspiration, then try again?";
       });
   },
   data() {
@@ -50,7 +51,7 @@ const artCollection = Vue.createApp({
       const artworkCon = document.querySelector("#artworkInfoCon");
       artworkCon.innerHTML = spinner;
 
-      fetch(`https://api.artic.edu/api/v1/artworks/${artworkId}`)
+      fetch(`https://api.artic.edu/api/v1/artwork/${artworkId}`)
         .then((res) => {
           if (!res.ok) {
             throw new Error("Network response was not ok");
@@ -94,7 +95,9 @@ const artCollection = Vue.createApp({
         })
         .catch((error) => {
           console.error("Error fetching artwork:", error);
-          this.error = "Failed to fetch artwork details from the API";
+          this.error =
+            "Failed to fetch artwork details from the API. Looks like our connection is 'sketchy'! Maybe take a stroll through the museum and 'draw' some inspiration, then try again?";
+
           artworkCon.innerHTML = `
             <div class="error-message">${this.error}</div>`;
         });
