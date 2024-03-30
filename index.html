@@ -131,7 +131,7 @@
           <div class="col-span-full l-col-start-8 l-col-end-13 flex-container2">
             <div>
               <p class="special">SPECIAL TICKETED EXHIBITION</p>
-              <h3>Jean-Francois De Troy</h3>
+              <h4>Jean-Francois De Troy</h4>
               <p>July 8, 2023-August 11, 2024</p>
               <p class="artwork-desc">
                 Hunt Breakfast (1737), Luncheon with Oysters (1735) and other
@@ -167,12 +167,12 @@
                 v-for="artwork in artworksData"
                 :key="artwork.id"
               >
-                <h3>
+                <h4>
                   Title:
                   <a href="#artwork" @click="getArtwork(artwork.id)">
                     {{ artwork.title }}
                   </a>
-                </h3>
+                </h4>
                 <img
                   v-bind:src="`images/${artwork.artwork_thumbnail}`"
                   alt="Artwork Thumbnail"
